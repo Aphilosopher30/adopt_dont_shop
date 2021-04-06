@@ -10,12 +10,15 @@
 <br>
 <%= "#{@application.pitch}"  %><br><br>
 
-
-<%= "#{@application.progress}"  %>
-
-<br>
 <%= "List of pets"  %><br><br>
 <% @application.pets.each do |pet| %>
   <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
 <br>
 <%  end  %>
+
+
+<br>
+<br>
+<%= "#{@application.progress}"  %>
+
+<br>
