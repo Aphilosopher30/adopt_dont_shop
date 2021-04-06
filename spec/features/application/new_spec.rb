@@ -9,10 +9,9 @@ RSpec.describe 'new application page' do
 
     expect(find('form')).to have_content('Name')
     expect(find('form')).to have_content('City')
-    expect(find('form')).to have_content('street_adress')
-    expect(find('form')).to have_content('zip_code')
-    expect(find('form')).to have_content('state')
-    expect(find('form')).to have_content('pitch')
+    expect(find('form')).to have_content('Street adress')
+    expect(find('form')).to have_content('Zip code')
+    expect(find('form')).to have_content('State')
 
   end
 
