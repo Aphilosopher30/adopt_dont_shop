@@ -34,6 +34,6 @@ Add a pet to this page
 <br>
 <% @pets.each do |pet| %>
   <%= pet.name %>
-  <%= button_to "Adopt this Pet", "/applications/#{@application.id}/#{pet.id}", method: :post%>
+  <%= button_to "Adopt this Pet", "/application_pets/applications/#{@application.id}/pets/#{pet.id}", method: :post%>
   <br>
 <% end %>

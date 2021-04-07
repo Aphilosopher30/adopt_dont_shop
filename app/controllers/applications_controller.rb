@@ -25,7 +25,7 @@ class ApplicationsController < ApplicationController
   end
 
   def add_pet
-    # binding.pry
+   binding.pry
     pet = Pet.find(params[:pet_id])
     application = Application.find(params[:app_id])
     application_pets = ApplicationPet.create(pet: pet, application: application)
