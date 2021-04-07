@@ -23,6 +23,7 @@
 
 <br>
 
+Add a pet to this page
 <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
   <%= f.label :add_pet %>
   <%= f.text_field :add_pet %>
@@ -32,5 +33,7 @@
 
 <br>
 <% @pets.each do |pet| %>
-  <%= pet.name %><br>
+  <%= pet.name %>
+  <%= button_to "Adopt this Pet", "/applications/#{@application.id}/#{pet.id}", method: :post%>
+  <br>
 <% end %>
