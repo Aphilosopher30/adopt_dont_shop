@@ -25,12 +25,7 @@ why i would make a good pet owner:
 
 
 <% if @application.progress == "in progress"  %>
-  Add a pet to this page
-  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
-    <%= f.label :add_pet %>
-    <%= f.text_field :add_pet %>
-    <%= f.submit "Search" %>
-  <% end %>
+  <%= render partial: "form",  locals: {path_form: "/applications/#{@application.id}", meth: :get, button_text: "Search", called: :add_pet}  %>
 <% end %>
 
 

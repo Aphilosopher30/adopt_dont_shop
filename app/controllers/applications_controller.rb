@@ -19,17 +19,21 @@ class ApplicationsController < ApplicationController
     application = Application.new(application_params)
     application.progress = "in progress"
 
-    application.save
+    if application.save
+      redirect_to "/applications/#{application.id}"
+    else
+      flash[:name] = "please fill in all fields"
 
-    redirect_to "/applications/#{application.id}"
+      render :new
+    end
   end
 
-  def add_pet
-    pet = Pet.find(params[:pet_id])
-    application = Application.find(params[:app_id])
-    application_pets = ApplicationPet.create(pet: pet, application: application)
-    redirect_to "/applications/#{application.id}"
-  end
+  # def add_pet
+  #   pet = Pet.find(params[:pet_id])
+  #   application = Application.find(params[:app_id])
+  #   application_pets = ApplicationPet.create(pet: pet, application: application)
+  #   redirect_to "/applications/#{application.id}"
+  # end
 
   def submit
     @application = Application.find(params[:id])
