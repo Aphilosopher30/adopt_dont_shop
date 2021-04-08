@@ -8,6 +8,9 @@
 <%= "#{@application.zip_code} "  %><br>
 <br>
 <br>
+
+why i would make a good pet owner:
+<br>
 <%= "#{@application.pitch}"  %><br><br>
 
 <%= "List of pets"  %><br><br>
@@ -19,15 +22,15 @@
 
 <br>
 <br>
-<%= "#{@application.progress}"  %>
 
-<br>
 
-Add a pet to this page
-<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
-  <%= f.label :add_pet %>
-  <%= f.text_field :add_pet %>
-  <%= f.submit "Search" %>
+<% if @application.progress == "in progress"  %>
+  Add a pet to this page
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+    <%= f.label :add_pet %>
+    <%= f.text_field :add_pet %>
+    <%= f.submit "Search" %>
+  <% end %>
 <% end %>
 
 
@@ -37,3 +40,24 @@ Add a pet to this page
   <%= button_to "Adopt this Pet", "/application_pets/applications/#{@application.id}/pets/#{pet.id}", method: :post%>
   <br>
 <% end %>
+
+
+
+<% unless @application.pets.empty?  %>
+  submit you application:
+
+  <%= form_with url: "/applications/#{@application.id}", method: :put, local: true do |f| %>
+    <%= f.label :why_I_would_make_a_good_owner_for_these_pets %>
+    <%= f.text_field :pitch %>
+    <%= f.submit "submit" %>
+  <% end %>
+
+<% end %>
+
+
+<br>
+<br>
+your application is
+<%= "#{@application.progress}"  %>
+
+<br>
