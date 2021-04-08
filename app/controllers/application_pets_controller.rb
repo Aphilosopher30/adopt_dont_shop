@@ -1,9 +1,6 @@
 class ApplicationPetsController < ApplicationController
 
 
-
-
-
   def create
 #   binding.pry
     pet = Pet.find(params[:pet_id])
