@@ -6,6 +6,8 @@ class ApplicationPets < ActiveRecord::Migration[5.2]
       t.references :pet, foreign_key: true
       t.references :application, foreign_key: true
 
+      t.string :approval 
+
       t.timestamps
     end
   end

@@ -41,4 +41,19 @@ RSpec.describe Pet, type: :model do
       end
     end
   end
+
+  describe 'find_specific_app' do
+    it 'returns the applicaiton_pet that matches the pet and a specific application number' do
+      shelter_a = Shelter.create!(name: "shelter_1", city: "greenvil", rank: "1", foster_program: "b")
+
+      pet_a = shelter_a.pets.create!(name: "alice", age: 1,  adoptable: true, breed: "corgy")
+
+      token_app = Application.create!(name: "applicant", street_adress: "number street st", city: "burgerburg", state: "ST", zip_code: 555, pitch: "i cool", progress: "not_in_progress")
+
+      app_pet_1 = ApplicationPet.create!(pet_id: pet_a.id, application_id: token_app.id )
+
+      expect(pet_a.find_specific_app(token_app.id)).to eq(app_pet_1 )
+    end
+  end
+
 end

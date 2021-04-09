@@ -13,4 +13,8 @@ class Pet < ApplicationRecord
   def self.adoptable
     where(adoptable: true)
   end
+
+  def find_specific_app(application_id)
+    @application_pet = self.application_pets.find_by_sql("SELECT * FROM application_pets where application_id = #{application_id} AND pet_id = #{self.id}").first
+  end
 end

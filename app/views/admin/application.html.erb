@@ -1,0 +1,18 @@
+<% @pets.each do |pet| %>
+  <%= pet.name %>
+
+  <% if pet.find_specific_app(@application.id).approval == nil %>
+    <%= button_to "approve #{pet.name}", "/admin/applications/#{@application.id}/#{pet.id}/accept", method: :patch%>
+    <%= button_to "reject #{pet.name}", "/admin/applications/#{@application.id}/#{pet.id}/reject", method: :patch%>
+  <% elsif pet.find_specific_app(@application.id).approval  == 'rejected' %>
+    <%= " rejected" %>
+  <% elsif pet.find_specific_app(@application.id).approval == 'approved' %>
+    <%= " approved" %>
+  <% else %>
+    <%= " error: don't know if it has been approved or rejected" %>
+    <%= button_to "approve #{pet.name}", "/admin/applications/#{@application.id}/#{pet.id}/accept", method: :patch%>
+    <%= button_to "reject #{pet.name}", "/admin/applications/#{@application.id}/#{pet.id}/reject", method: :patch%>
+  <% end =%>
+
+  <br>
+<%  end  %>
